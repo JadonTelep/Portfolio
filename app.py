@@ -306,7 +306,7 @@ elif page == "Projects":
     * Data Migration and ETL Processes
     
     ### Results
-    Improved intelligence data retrieval speed by 65% and reduced reporting time by 40%, significantly 
+    Improved intelligence data retrieval speed and reduced reporting time, significantly 
     enhancing operational effectiveness for field units while maintaining robust security protocols.
     """)
     
@@ -328,7 +328,7 @@ elif page == "Projects":
     * Security Monitoring Tools
     
     ### Results
-    Enhanced overall network security posture, reduced unauthorized access attempts by 78%, 
+    Enhanced overall network security posture, reduced unauthorized access attempts, 
     and streamlined VPN access management for remote employees, improving both security and productivity.
     """)
     
