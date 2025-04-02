@@ -222,31 +222,31 @@ if page == "Home":
     st.markdown(f"""
     <div class="experience-card" style="background-color:{card_bg}; padding:20px; border-radius:10px; margin-bottom:20px; transition: transform 0.3s ease, box-shadow 0.3s ease;">
         <h4 style="color:{title_color};">Data Scientist - DOD 501st Military Intelligence Brigade</h4>
-        <p><strong>Period:</strong> 2022 - 2024</p>
+        <p><strong>Period:</strong> 01/2023 - 05/2023</p>
         <ul>
-            <li>Developed machine learning models to identify military equipment from images with 90% accuracy</li>
-            <li>Designed intelligence database solutions that improved data retrieval speed by 65%</li>
-            <li>Created analysis tools for field intelligence processing, reducing reporting time by 40%</li>
+            <li>Worked directly with DoD personnel crafting and refining solutions for ongoing computerbased issues.</li>
+            <li>Designed cloud based solution for Korean allied forces intelligence teams.</li>
+            <li>Created image recognition program for labeling images of military equipment.</li>
         </ul>
     </div>
     
     <div class="experience-card" style="background-color:{card_bg}; padding:20px; border-radius:10px; margin-bottom:20px; transition: transform 0.3s ease, box-shadow 0.3s ease;">
         <h4 style="color:{title_color};">Network Security Intern - CSAA Insurance</h4>
-        <p><strong>Period:</strong> 2021 - 2022</p>
+        <p><strong>Period:</strong> 01/2024 - 05/2024</p>
         <ul>
             <li>Implemented comprehensive network monitoring systems to protect sensitive data</li>
             <li>Configured VPN management systems for secure remote access for employees</li>
-            <li>Reduced unauthorized access attempts by 78% through security enhancement measures</li>
+            <li>Reduced unauthorized access attempts through security enhancement measures</li>
         </ul>
     </div>
     
     <div class="experience-card" style="background-color:{card_bg}; padding:20px; border-radius:10px; margin-bottom:20px; transition: transform 0.3s ease, box-shadow 0.3s ease;">
-        <h4 style="color:{title_color};">Research Assistant - Arizona State University</h4>
-        <p><strong>Period:</strong> 2020 - 2021</p>
+        <h4 style="color:{title_color};">IT Service Technician - CSAA Insurance</h4>
+        <p><strong>Period:</strong> 05/2022 - Present</p>
         <ul>
-            <li>Assisted faculty with research on accessibility in machine learning models</li>
-            <li>Conducted statistical analysis of model performance across diverse user groups</li>
-            <li>Contributed to two published papers on learnability in AI systems</li>
+            <li>Resolved network, access, and end user equipment issues</li>
+            <li>Established tickets for engaging support through established ticketing system</li>
+            <li>Worked with local and international contractors to establish access to virtual desktops.</li>
         </ul>
     </div>
     """, unsafe_allow_html=True)
@@ -280,16 +280,14 @@ elif page == "Projects":
     
     ### Technologies Used
     * Python (TensorFlow, Keras)
-    * Convolutional Neural Networks
-    * Computer Vision
-    * Transfer Learning (MobileNet)
+    * YOLO Computer Vision
     
     ### Results
-    Created a robust classification system with over 90% accuracy in identifying critical military equipment, 
+    Created a robust classification system with over 95% accuracy in identifying critical military equipment, 
     significantly enhancing intelligence capabilities for allied forces.
     """)
     
-    st.markdown("[View GitHub Repository](https://github.com/JadonTelep/)")
+    #st.markdown("[View GitHub Repository](https://github.com/JadonTelep/)")
     
     # Project 2
     st.header("Project 2: Military Intelligence Database Solutions")
@@ -312,14 +310,14 @@ elif page == "Projects":
     enhancing operational effectiveness for field units while maintaining robust security protocols.
     """)
     
-    st.markdown("[View GitHub Repository](https://github.com/JadonTelep/)")
+    #st.markdown("[View GitHub Repository](https://github.com/JadonTelep/)")
     
     # Project 3
     st.header("Project 3: Network Security and VPN Management System")
     
     st.markdown("""
     ### Overview
-    Designed and implemented a comprehensive network security monitoring system during my internship at CSAA. 
+    Reviewed and revised a comprehensive network security monitoring system during my internship at CSAA. 
     The system included VPN management, firewall configuration, and real-time security alert monitoring to 
     protect sensitive company data and ensure network integrity.
     
@@ -327,7 +325,6 @@ elif page == "Projects":
     * Network Security Protocols
     * Firewall Configuration and Management
     * VPN Administration
-    * Python for Log Analysis
     * Security Monitoring Tools
     
     ### Results
@@ -335,87 +332,87 @@ elif page == "Projects":
     and streamlined VPN access management for remote employees, improving both security and productivity.
     """)
     
-    st.markdown("[View GitHub Repository](https://github.com/JadonTelep/)")
+    #st.markdown("[View GitHub Repository](https://github.com/JadonTelep/)")
 
 elif page == "GitHub":
     st.title("GitHub Repositories")
     
-    # GitHub username input
-    github_username = st.text_input("GitHub Username", "jadontelep")
+    # Hardcoded GitHub username
+    github_username = "jadontelep"
     
-    if github_username:
-        with st.spinner(f"Fetching repositories for {github_username}..."):
-            try:
-                repos = get_github_repos(github_username)
-                
-                if repos:
-                    st.success(f"Found {len(repos)} public repositories")
-                    
-                    # Create selectable repo list
-                    repo_names = [repo["name"] for repo in repos]
-                    selected_repo = st.selectbox("Select a repository to view details", repo_names)
-                    
-                    # Find the selected repo
-                    selected_repo_data = next((repo for repo in repos if repo["name"] == selected_repo), None)
-                    
-                    if selected_repo_data:
-                        st.subheader(selected_repo_data["name"])
-                        
-                        col1, col2 = st.columns([3, 1])
-                        
-                        with col1:
-                            st.markdown(f"**Description**: {selected_repo_data['description'] or 'No description available'}")
-                            st.markdown(f"**Language**: {selected_repo_data['language'] or 'Not specified'}")
-                            st.markdown(f"**Created**: {selected_repo_data['created_at'].split('T')[0]}")
-                            st.markdown(f"**Last Updated**: {selected_repo_data['updated_at'].split('T')[0]}")
-                            st.markdown(f"**URL**: [{selected_repo_data['html_url']}]({selected_repo_data['html_url']})")
-                        
-                        with col2:
-                            st.metric("Stars", selected_repo_data["stargazers_count"])
-                            st.metric("Forks", selected_repo_data["forks_count"])
-                            st.metric("Watchers", selected_repo_data["watchers_count"])
-                            st.metric("Open Issues", selected_repo_data["open_issues_count"])
-                    
-                    # Display repositories in a table with a slider to control how many to show
-                    st.subheader("Repositories")
-                    
-                    # Create DataFrame with repos
-                    repo_data = []
-                    for repo in repos:
-                        repo_data.append({
-                            "Name": repo["name"],
-                            "Language": repo["language"] or "Not specified",
-                            "Stars": repo["stargazers_count"],
-                            "Forks": repo["forks_count"],
-                            "Last Updated": repo["updated_at"].split("T")[0],
-                            "URL": repo["html_url"]
-                        })
-                    
-                    repo_df = pd.DataFrame(repo_data)
-                    
-                    # Sort by update date (most recent first)
-                    repo_df['Last Updated'] = pd.to_datetime(repo_df['Last Updated'])
-                    repo_df = repo_df.sort_values(by='Last Updated', ascending=False)
-                    repo_df['Last Updated'] = repo_df['Last Updated'].dt.strftime('%Y-%m-%d')
-                    
-                    # Create clickable links
-                    def make_clickable(url, name):
-                        return f'<a href="{url}" target="_blank">{name}</a>'
-                    
-                    repo_df['Name'] = repo_df.apply(lambda x: make_clickable(x['URL'], x['Name']), axis=1)
-                    repo_df = repo_df.drop(columns=['URL'])
-                    
-                    # Always show only the 5 most recent repositories
-                    st.write("Showing the 5 most recent repositories:")
-                    
-                    # Display the 5 most recent repositories
-                    st.write(repo_df.head(5).to_html(escape=False, index=False), unsafe_allow_html=True)
-                    
-                else:
-                    st.warning(f"No public repositories found for {github_username}")
+    with st.spinner(f"Fetching repositories for {github_username}..."):
+        try:
+            repos = get_github_repos(github_username)
             
-            except Exception as e:
-                st.error(f"Error fetching GitHub repositories: {str(e)}")
+            if repos:
+                st.success(f"Found {len(repos)} public repositories")
+                
+                # Create selectable repo list
+                repo_names = [repo["name"] for repo in repos]
+                selected_repo = st.selectbox("Select a repository to view details", repo_names)
+                
+                # Find the selected repo
+                selected_repo_data = next((repo for repo in repos if repo["name"] == selected_repo), None)
+                
+                if selected_repo_data:
+                    st.subheader(selected_repo_data["name"])
+                    
+                    col1, col2 = st.columns([3, 1])
+                    
+                    with col1:
+                        st.markdown(f"**Description**: {selected_repo_data['description'] or 'No description available'}")
+                        st.markdown(f"**Language**: {selected_repo_data['language'] or 'Not specified'}")
+                        st.markdown(f"**Created**: {selected_repo_data['created_at'].split('T')[0]}")
+                        st.markdown(f"**Last Updated**: {selected_repo_data['updated_at'].split('T')[0]}")
+                        st.markdown(f"**URL**: [{selected_repo_data['html_url']}]({selected_repo_data['html_url']})")
+                    
+                    with col2:
+                        st.metric("Stars", selected_repo_data["stargazers_count"])
+                        st.metric("Forks", selected_repo_data["forks_count"])
+                        st.metric("Watchers", selected_repo_data["watchers_count"])
+                        st.metric("Open Issues", selected_repo_data["open_issues_count"])
+                
+                # Display repositories in a table with a slider to control how many to show
+                st.subheader("Repositories")
+                
+                # Create DataFrame with repos
+                repo_data = []
+                for repo in repos:
+                    repo_data.append({
+                        "Name": repo["name"],
+                        "Language": repo["language"] or "Not specified",
+                        "Stars": repo["stargazers_count"],
+                        "Forks": repo["forks_count"],
+                        "Last Updated": repo["updated_at"].split("T")[0],
+                        "URL": repo["html_url"]
+                    })
+                
+                repo_df = pd.DataFrame(repo_data)
+                
+                # Sort by update date (most recent first)
+                repo_df['Last Updated'] = pd.to_datetime(repo_df['Last Updated'])
+                repo_df = repo_df.sort_values(by='Last Updated', ascending=False)
+                repo_df['Last Updated'] = repo_df['Last Updated'].dt.strftime('%Y-%m-%d')
+                
+                # Create clickable links
+                def make_clickable(url, name):
+                    return f'<a href="{url}" target="_blank">{name}</a>'
+                
+                repo_df['Name'] = repo_df.apply(lambda x: make_clickable(x['URL'], x['Name']), axis=1)
+                repo_df = repo_df.drop(columns=['URL'])
+                
+                # Always show only the 5 most recent repositories
+                st.write("Showing the 5 most recent repositories:")
+                
+                # Display the 5 most recent repositories
+                st.write(repo_df.head(5).to_html(escape=False, index=False), unsafe_allow_html=True)
+                
+            else:
+                st.warning(f"No public repositories found for {github_username}")
+        
+        except Exception as e:
+            st.error(f"Error fetching GitHub repositories: {str(e)}")
+
 
 elif page == "Contact":
     st.title("Contact Me")
