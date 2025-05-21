@@ -28,6 +28,7 @@ A modern, responsive portfolio website built with Streamlit, designed to showcas
 ## Customization
 
 The portfolio can be easily customized by:
+
 - Modifying personal information in the app_new.py file
 - Adding or removing projects in the relevant section
 - Updating GitHub username
@@ -44,7 +45,7 @@ See deployment_instructions.md for detailed hosting instructions.
 pip install -r dependencies.txt
 
 # Run the application
-streamlit run app_new.py
+python -m streamlit run app.py
 ```
 
 ## License
