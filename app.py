@@ -1,11 +1,7 @@
 import streamlit as st
 import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import plotly.express as px
-import plotly.graph_objects as go
 import time
-from utils import get_github_repos, create_skills_chart, create_experience_chart
+from utils import get_github_repos
 
 # Page configuration
 st.set_page_config(
