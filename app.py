@@ -90,6 +90,11 @@ st.markdown("""
         background-color: #f8f9fa;
         color: #333333;
     }
+    
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
+    
 </style>
 """, unsafe_allow_html=True)
 
@@ -408,10 +413,6 @@ elif page == "GitHub":
         
         except Exception as e:
             st.error(f"Error fetching GitHub repositories: {str(e)}")
-
-
-elif page == "Contact":
-    st.title("Contact Me")
     
     # Get current theme colors
     card_bg = "#f8f9fa"
