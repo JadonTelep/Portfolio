@@ -1,6 +1,11 @@
+from dotenv import load_dotenv
+import os
 import streamlit as st
 import pandas as pd
+import re
 import time
+import smtplib
+from email.message import EmailMessage
 from utils import get_github_repos
 
 # Page configuration
@@ -413,6 +418,10 @@ elif page == "GitHub":
         
         except Exception as e:
             st.error(f"Error fetching GitHub repositories: {str(e)}")
+
+elif page == "Contact":
+    
+    st.title("Contact Me")
     
     # Get current theme colors
     card_bg = "#f8f9fa"
@@ -437,7 +446,6 @@ elif page == "GitHub":
     
     # Contact form with animation delay
     with st.form("contact_form"):
-        name = st.text_input("Name")
         email = st.text_input("Email")
         subject = st.text_input("Subject")
         message = st.text_area("Message", height=150)
@@ -457,8 +465,39 @@ elif page == "GitHub":
         
         submitted = st.form_submit_button("Send Message")
         
+        def is_valid_email(email):
+            pattern = r'^[\w\.-]+@[\w\.-]+\.\w+$'
+            return re.match(pattern, email) is not None
+        
         if submitted:
-            if name and email and message:
+            if subject and email and message:
+                if is_valid_email(email):
+                    load_dotenv() 
+                    token = os.getenv("TOKEN")
+                    
+                    msg = EmailMessage()
+                    msg['Subject'] = subject
+                    msg['From'] = email
+                    msg['To'] = 'jadon.telep@gmail.com'
+                    msg.set_content(message)
+
+                    # Gmail SMTP server
+                    smtp_server = 'smtp.gmail.com'
+                    port = 587  # TLS port
+
+                    # Login credentials
+                    your_email = 'jadon.telep@gmail.com'
+                    your_password = token  # Use an app password if using Gmail
+                else:
+                    st.error("Invalid email")
+                # Sending the email
+                with smtplib.SMTP(smtp_server, port) as server:
+                    server.starttls()  # Secure the connection
+                    server.login(your_email, your_password)
+                    server.send_message(msg)
+
+                print('Email sent successfully!')
+                
                 st.success("Thank you for reaching out! I'll get back to you as soon as possible.")
                 # In a real application, you would add code here to send the message
             else:
@@ -472,6 +511,6 @@ elif page == "GitHub":
     <div style="background-color:{card_bg}; padding:20px; border-radius:10px; margin-top:30px; animation: fadeIn 0.7s ease-out;
          box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">
         <h3 style="color:{title_color}; margin-bottom:15px;">Availability</h3>
-        <p style="font-size:16px;">I'm currently available for freelance work, consulting, and full-time positions. My typical response time is within 24-48 hours.</p>
+        <p style="font-size:16px;">I'm currently available for full-time positions. My typical response time is within 24-48 hours.</p>
     </div>
     """, unsafe_allow_html=True)
