@@ -1,10 +1,15 @@
 [project]
-name = "app"
+name = "portfolio"
 version = "0.1.0"
 description = "Portfolio Project"
 requires-python = ">=3.11"
+
 dependencies = [
     "pandas>=2.2.3",
     "requests>=2.32.3",
     "streamlit>=1.44.1",
 ]
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
