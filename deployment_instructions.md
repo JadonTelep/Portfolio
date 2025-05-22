@@ -2,7 +2,7 @@
 
 ## Files You Need to Download
 
-1. `app_new.py` - Main application file (you may want to rename this to `app.py` after downloading)
+1. `app.py` - Main application file (you may want to rename this to `app.py` after downloading)
 2. `utils.py` - Utility functions file
 3. `.streamlit/config.toml` - Streamlit configuration file
 4. All assets in the `assets` folder (if any are used)
