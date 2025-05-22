@@ -16,7 +16,6 @@ streamlit==1.27.0
 pandas==2.0.3
 requests==2.31.0
 python-dotenv==1.1.0
-dotenv==0.9.9
 ```
 
 You can install these packages using:
