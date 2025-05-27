@@ -1,7 +1,5 @@
-import os
 import streamlit as st
 import pandas as pd
-from dotenv import load_dotenv
 import re
 import time
 import smtplib
@@ -472,8 +470,8 @@ elif page == "Contact":
         if submitted:
             if subject and email and message:
                 if is_valid_email(email):
-                    load_dotenv() 
-                    token = os.getenv("TOKEN")
+                    
+                    token = st.secrets["api_keys"]["TOKEN"]
                     
                     msg = EmailMessage()
                     msg['Subject'] = subject
